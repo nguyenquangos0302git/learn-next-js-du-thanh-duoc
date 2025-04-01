@@ -1,23 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
+import ButtonRedirect from "./components/ButtonRedirect";
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  const isAuth = false;
+  if (!isAuth) {
+    redirect("/login")
+  }
+
+
   return (
     <div>
-      <div className="w-[700px] h-[700px] bg-red-300">
-        {/* <Image
-          src={'/next.svg'}
-          alt="test"
-          width={500}
-          height={500}
-        /> */}
-        <Image
-          src={'https://images.pexels.com/photos/31237847/pexels-photo-31237847/free-photo-of-vintage-tea-setting-with-book-and-flowers.jpeg'}
-          alt="test"
-          width={200}
-          height={200}
-          quality={75}
-        />
-      </div>
+      <ul>
+        <li>
+          <Link href={"/login"}>Login</Link>
+        </li>
+        <li>
+          <Link href={"/register"}>Register</Link>
+        </li>
+      </ul>
+      <ButtonRedirect />
     </div>
   );
 }
